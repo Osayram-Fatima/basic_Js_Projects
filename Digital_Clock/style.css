@@ -1,0 +1,150 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2d2d2d 0%, #4a4a4a 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main container */
+.container {
+    background: linear-gradient(145deg, #3a3a3a, #2e2e2e);
+    padding: 40px 50px;
+    border-radius: 30px;
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+    min-width: 400px;
+}
+
+/* Time section */
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+/* Hour, Minute, Second */
+.hour, .minute, .second {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #ff69b4;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+    font-variant-numeric: tabular-nums;
+    min-width: 80px;
+}
+
+/* Dots between time */
+.dot {
+    font-size: 3rem;
+    color: #888;
+    animation: blink 1s infinite;
+    padding-bottom: 10px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* AM/PM indicator */
+.am_pm {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff85c2;
+    background: linear-gradient(145deg, #4a4a4a, #3d3d3d);
+    padding: 8px 15px;
+    border-radius: 12px;
+    margin-left: 10px;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Date section */
+.date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Day */
+.day {
+    font-size: 1.1rem;
+    color: #aaa;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Date number */
+.date-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff69b4;
+    background: linear-gradient(145deg, #4a4a4a, #3d3d3d);
+    padding: 8px 18px;
+    border-radius: 12px;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Month */
+.month {
+    font-size: 1.1rem;
+    color: #aaa;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .container {
+        padding: 25px 30px;
+        min-width: 90vw;
+    }
+
+    .hour, .minute, .second {
+        font-size: 3rem;
+        min-width: 55px;
+    }
+
+    .dot {
+        font-size: 2rem;
+    }
+
+    .am_pm {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
+
+    .date {
+        gap: 10px;
+    }
+
+    .day, .month {
+        font-size: 0.9rem;
+    }
+
+    .date-number {
+        font-size: 1.2rem;
+        padding: 6px 12px;
+    }
+}
