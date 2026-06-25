@@ -90,7 +90,8 @@ weatherButton.addEventListener("click", (e) => {
       currentcode = cities[j]["code"];
       console.log(currentcountry);
       console.log(currentcode);
-      apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${currentcity},${currentcode}&APPID=b1f69fdd88b86af67f245cafab26b5a0&units=metric`;
+      //generate an api link from openweather and use it here :)
+      apiCall = `https://useYourOwnToken/data/2.5/weather?q=${currentcity},${currentcode}&APPID=abcd&units=metric`;
     } else {
     }
   }
