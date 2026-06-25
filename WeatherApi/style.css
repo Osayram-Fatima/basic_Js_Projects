@@ -1,0 +1,393 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background: url('cloud.jpg') no-repeat center center / cover;
+    position: relative;
+    color: #fff;
+}
+
+/* Dark overlay for readability */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 80, 160, 0.35);
+    z-index: -1;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.heading h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.heading h1::before {
+    content: '☀️';
+    font-size: 1.8rem;
+}
+
+.inputContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#cityInput {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    width: 220px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+ 
+
+#cityInput:focus {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== NEW: Select Dropdown Styling ===== */
+#arr {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    min-width: 140px;
+}
+
+#arr:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+#arr:focus {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+#arr option {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 8px;
+}
+
+#getWeatherBtn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#getWeatherBtn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+/* ===== MAIN ===== */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    min-height: calc(100vh - 140px);
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* ===== WEATHER CARD ===== */
+#weatherResult {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Location */
+.location {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Current Date & Time */
+.currentDate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.date {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.time {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.time .dot {
+    font-weight: 700;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ===== WEATHER DETAILS ===== */
+.weatherDetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.weatherDetails .left {
+    flex-shrink: 0;
+}
+
+.weatherDetails .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.temperature {
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.temperatureState {
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.feelLike {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: left;
+}
+
+/* ===== WEATHER FACTORS ===== */
+.weatherFactors {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 25px 0 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.factor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 100px;
+}
+
+ 
+
+ 
+.factorValue {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* ===== OPTIMIZED FOR HIGH CONTRAST & ACCESSIBILITY ===== */
+#cityInput::placeholder {
+    color: rgba(255, 255, 255, 0.8); /* Enhanced placeholder visibility */
+}
+
+.factorName {
+    font-size: 0.95rem; /* Upindexed for readability */
+    color: rgba(255, 255, 255, 0.9); /* Maximized contrast against background */
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* Fixed the escaping issue so emojis actually render */
+.factorName::before {
+    font-size: 1.2rem;
+}
+.factorName.Humidity::before { content: '💧'; }
+.factorName[class*="Wind"]::before { content: '💨'; } /* Robust selector matching */
+.factorName.Pressure::before { content: '⏱️'; }
+.factorName.Visibility::before { content: '👁️'; }
+
+/* ===== FOOTER OPTIMIZATION ===== */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(0, 40, 80, 0.4), rgba(0, 20, 40, 0.2)); /* Darkened baseline for pop */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .heading h1 {
+        font-size: 1.3rem;
+    }
+
+    .inputContainer {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #cityInput {
+        flex: 1;
+        max-width: 200px;
+    }
+
+    #arr {
+        flex: 1;
+        max-width: 160px;
+    }
+
+    #weatherResult {
+        padding: 25px 20px;
+    }
+
+    .location {
+        font-size: 1.5rem;
+    }
+
+    .temperature {
+        font-size: 3.5rem;
+    }
+
+    .weatherDetails {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .weatherDetails .right {
+        align-items: center;
+    }
+
+    .temperatureState,
+    .feelLike {
+        text-align: center;
+    }
+
+    .weatherFactors {
+        gap: 20px;
+    }
+
+    .factor {
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .temperature {
+        font-size: 3rem;
+    }
+
+    .weatherFactors {
+        gap: 15px;
+    }
+
+    .factor {
+        min-width: 70px;
+    }
+
+    .factorValue {
+        font-size: 1rem;
+    }
+
+    .inputContainer {
+        flex-wrap: wrap;
+    }
+
+    #arr {
+        width: 100%;
+        max-width: none;
+    }
+}

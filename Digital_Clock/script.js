@@ -4,7 +4,7 @@ let hour = document.querySelector(".hour");
 let day = document.querySelector(".day");
 let date = document.querySelector(".date-number");
 let month = document.querySelector(".month");
-
+let period=document.querySelector(".am_pm")
 let totalMonths = [
   "january",
   "february",
@@ -31,6 +31,8 @@ let totalDays = [
   "Saturday",
 ];
 
+
+
 function updateClock() {
   let current_date = new Date();
   let tempDay = current_date.getDay();
@@ -39,7 +41,13 @@ function updateClock() {
   let tempHours = current_date.getHours();
   let tempMinutes = current_date.getMinutes();
   let tempSeconds = current_date.getSeconds();
-
+ 
+  if(tempHours>12){
+    period.innerHTML="PM"
+  }
+  else{
+    period.innerHTML="AM"
+  }
   day.innerHTML = totalDays[tempDay];
   date.innerHTML = tempDate;
   month.innerHTML = totalMonths[tempMonth];
@@ -51,4 +59,4 @@ function updateClock() {
 
 setInterval(() => {
   updateClock();
-}, 100);
+}, 1000);
